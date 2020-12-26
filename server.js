@@ -26,8 +26,14 @@ app.get("/api/hello", function (req, res) {
 
 app.get("/api/timestamp/:date?", function (req, res) {
     let date = null;
-    if (req.params.date) {
-      date = new Date(req.params.date);
+    let input = req.params.date
+    if (input) {
+      if (parseInt(input) != null) {
+        date = new Date(parseInt(input));
+      }
+      else {
+        date = new Date(input);
+      }
     } else {
       date = new Date();
     }
