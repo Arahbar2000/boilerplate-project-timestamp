@@ -28,7 +28,7 @@ app.get("/api/timestamp/:date?", function (req, res) {
     let date = null;
     let input = req.params.date
     if (input) {
-      if (!isNaN(parseInt(input))) {
+      if (/\d{5,}/.test(input)) {
         date = new Date(parseInt(input));
       }
       else {
